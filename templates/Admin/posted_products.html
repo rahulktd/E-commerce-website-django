@@ -1,0 +1,23 @@
+{% extends "Admin/admin.html" %}
+{% block content %}
+
+
+{% for i in posted %}
+<div class="card">
+  <div class="card-body">
+<li>Product:{{i.product_name}}</li>
+<li>Description:{{i.description}}</li>
+<li>Price:{{i.price}}</li>
+<li>Category:{{i.category}}</li>
+<li>Brand:{{i.brand}}</li>
+<li>Date of Post:{{i.created_date}}</li>
+<li>Date of Updation:{{i.last_update}}</li>
+<!--       <img src="{{ i.image.url }}" class="bg-gray-200 rounded-full w-10 h-10">-->
+      </div>
+    </div>
+
+
+{% endfor %}
+
+
+{% endblock %}

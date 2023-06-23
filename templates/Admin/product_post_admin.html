@@ -1,0 +1,22 @@
+{% extends "Admin/admin.html" %}
+{%load crispy_forms_tags %}
+{% block content %}
+
+<div class="card">
+  <div class="card-body">
+    <h1 style="text-align:center;">Post Products</h1>
+    <form method="POST" enctype="multipart/form-data">
+
+      {% csrf_token %}
+
+      {{product_form|crispy}}
+
+      <div class="p-t-15">
+                            <button style="color:red;" class="btn btn--radius-2 btn--blue" type="submit">Submit</button>
+                        </div>
+
+    </form>
+  </div>
+</div>
+
+{% endblock %}
