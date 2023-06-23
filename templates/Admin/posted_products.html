@@ -12,7 +12,18 @@
 <li>Brand:{{i.brand}}</li>
 <li>Date of Post:{{i.created_date}}</li>
 <li>Date of Updation:{{i.last_update}}</li>
-<!--       <img src="{{ i.image.url }}" class="bg-gray-200 rounded-full w-10 h-10">-->
+      <li> {% if i.image %}
+       <img src="{{ i.image.url }}"  width="50" height="50">
+      {% endif %}
+      </li>
+      <li><form action="{% url 'delete_product' i.id %}" method="POST" class="d-inline-block">
+{% csrf_token %}
+                <input type="submit" class="btn btn-danger" value="delete"/>
+            </form></li>
+      <a href="{% url 'update_product' i.id %}">
+                <button type="button" class="btn btn-primary">Update</button>
+            </a>
+
       </div>
     </div>
 
