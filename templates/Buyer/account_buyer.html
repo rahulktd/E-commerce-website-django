@@ -1,0 +1,23 @@
+{% extends "Buyer/buyer_dashboard.html" %}
+
+{% block content %}
+
+<h1 style="text-align: center;">Profile</h1>
+<div class="card">
+
+  <div class="card-body" style="text-align: center; ">
+
+    <h1>Welcome, {{ user.username }}!</h1>
+    <p>Name: {{ user.name }}</p>
+    <p>Email: {{ user.email }}</p>
+    <p>Mobile: {{ user.mobile }}</p>
+    <p>Address: {{ user.address }}</p>
+  </div>
+  <a href="account_update_buyer" class="btn btn-info btn-lg" style="margin-bottom:10px;">
+    <span class="glyphicon glyphicon-edit"></span> Edit Your Profile
+  </a>
+
+  </div>
+
+
+{% endblock %}

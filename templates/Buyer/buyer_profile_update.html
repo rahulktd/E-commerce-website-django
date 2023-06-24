@@ -1,0 +1,18 @@
+{% extends "Buyer/buyer_dashboard.html" %}
+{%load crispy_forms_tags %}
+
+{% block content %}
+<div class="card">
+<div class="card-body">
+<form method="post">
+{% csrf_token %}
+    {{profile|crispy}}
+        <button style="width:100%;" class="btn btn-primary" type="submit">Update</button>
+
+</form>
+    </div>
+    </div>
+
+
+
+{% endblock %}

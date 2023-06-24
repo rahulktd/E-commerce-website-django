@@ -13,7 +13,12 @@ class BuyerForm(UserCreationForm):
 class PostProducts(forms.ModelForm):
     class Meta:
         model =AddProduct
-        fields = ("product_name","description","price","image","category","brand","created_date","last_update")
+        fields = ("product_name","description","price","image","category","brand","last_update")
+class BuyerProfileForm(forms.ModelForm):
+    class Meta:
+        model = AccReg
+        fields = ("name", "email", "mobile", "address", "username",)
+
 
 
 

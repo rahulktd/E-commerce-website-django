@@ -1,0 +1,28 @@
+{% extends "Buyer/buyer_dashboard.html" %}
+
+{% block content %}
+
+<div class="container">
+  <div class="row">
+    {% for i in data %}
+      <div class="col-md-4">
+        <div class="card" style="width: 18rem;">
+          {% if i.image %}
+            <img src="{{ i.image.url }}" class="card-img-top" height="100" width="100">
+          {% endif %}
+          <div class="card-body">
+            <h3 style="text-align: center;">{{ i.product_name }} - {{ i.brand }}</h3>
+            <p>Description: {{ i.description }}</p>
+            <li style="list-style: none;">Price: {{ i.price }}</li>
+            <br>
+            <a href="{% url 'product_view' i.id %}">
+              <button>Buy</button>
+            </a>
+          </div>
+        </div>
+      </div>
+    {% endfor %}
+  </div>
+</div>
+
+{% endblock %}
