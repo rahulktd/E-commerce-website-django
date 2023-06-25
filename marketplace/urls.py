@@ -17,6 +17,8 @@ urlpatterns = [
 
     path('delete_product/<int:id>/',Admin_views.delete_product,name='delete_product'),
     path('update_product/<int:id>/',Admin_views.update_product,name='update_product'),
+    path('admin_cart_view',Admin_views.admin_cart_view,name='admin_cart_view'),
+    path('reg_user',Admin_views.reg_user,name='reg_user'),
 
 
     path('buyer_dashboard',Buyer_views.buyer_dashboard,name='buyer_dashboard'),
@@ -27,6 +29,8 @@ urlpatterns = [
     path('fashion_products',Buyer_views.fashion_products,name='fashion_products'),
     path('grocery_products',Buyer_views.grocery_products,name='grocery_products'),
     path('product_view/<int:id>/',Buyer_views.product_view,name='product_view'),
+    path('add_to_cart/<int:id>/',Buyer_views.add_to_cart,name='add_to_cart'),
+    path('cart_view',Buyer_views.cart_view,name='cart_view'),
 
 
 ]

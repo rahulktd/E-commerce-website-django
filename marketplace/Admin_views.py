@@ -2,9 +2,8 @@ import requests
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect
-
 from marketplace.forms import PostProducts
-from marketplace.models import AddProduct
+from marketplace.models import AddProduct, Cart, AccReg
 
 
 @login_required(login_url='login_view')
@@ -46,6 +45,16 @@ def update_product(request,id):
     else:
         form = PostProducts(instance=product)
     return render(request, 'Admin/update_product.html',{'form':form})
+
+@login_required(login_url='login_view')
+def admin_cart_view(request):
+    carts = Cart.objects.all()
+    return render(request, 'Admin/admin_cart_view.html', {'carts': carts,})
+
+@login_required(login_url='login_view')
+def reg_user(request):
+    data = AccReg.objects.filter(is_buyer=True)
+    return render(request, 'Admin/view_users.html',{'data':data})
 
 # def view_products_from_api(request):
 #     response = requests.get('https://fakestoreapi.com/products')

@@ -14,8 +14,8 @@
         <p>Price: ₹ {{ product.price }}</p>
         <p>Brand: {{ product.brand }}</p>
           <div class="row">
-              <a>
-              <button class="btn btn-primary btn-lg">Add to cart</button>
+              <a href="{% url 'add_to_cart' product.id %}">
+              <button class="btn btn-primary btn-lg" >Add to cart</button>
           </a>
 
           <a style="padding-left:5px;">

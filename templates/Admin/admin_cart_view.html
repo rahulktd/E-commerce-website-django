@@ -1,0 +1,20 @@
+{% extends "Admin/admin.html" %}
+
+{% block content %}
+
+<h2>All Carts</h2>
+
+{% for cart in carts %}
+  <h3>Cart for User: {{ cart.user.username }}</h3>
+  {% if cart.products.all %}
+    <ul>
+      {% for product in cart.products.all %}
+        <li>{{ product.product_name }} - {{ product.price }}</li>
+      {% endfor %}
+    </ul>
+  {% else %}
+    <p>This cart is empty.</p>
+  {% endif %}
+{% endfor %}
+
+{% endblock %}

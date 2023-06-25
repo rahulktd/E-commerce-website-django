@@ -1,0 +1,18 @@
+{% extends "Buyer/buyer_dashboard.html" %}
+
+{% block content %}
+
+<div class="container">
+  <h2>Your Cart</h2>
+  {% if products %}
+    <ul>
+      {% for product in products %}
+        <li>{{ product.product_name }} - {{ product.brand }}</li>
+      {% endfor %}
+    </ul>
+  {% else %}
+    <p>Your cart is empty.</p>
+  {% endif %}
+</div>
+
+{% endblock %}

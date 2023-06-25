@@ -30,4 +30,8 @@ class AddProduct(models.Model):
     created_date = models.DateTimeField(default=datetime.now)
     last_update = models.DateTimeField(default=datetime.now)
 
+class Cart(models.Model):
+    user = models.ForeignKey(AccReg, on_delete=models.CASCADE)
+    products = models.ManyToManyField(AddProduct)
+
 
