@@ -12,6 +12,7 @@ urlpatterns = [
     path('admin_dashboard',Admin_views.admin_dashboard,name='admin_dashboard'),
     path('post_product',Admin_views.post_product,name='post_product'),
     path('view_posted',Admin_views.view_posted,name='view_posted'),
+    path('like_product',Admin_views.like_product,name='like_product'),
 
     # path('view_products_from_api',Admin_views.view_products_from_api,name='view_products_from_api'),
 
