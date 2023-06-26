@@ -9,8 +9,7 @@ from marketplace.models import AddProduct, Cart
 @login_required(login_url='login_view')
 def buyer_dashboard(request):
     data = AddProduct.objects.all()
-    data_filter = ProductFilter(request.GET, queryset=data)
-    return render(request,'Buyer/buyer_dashboard.html',{'data_filter':data_filter})
+    return render(request,'Buyer/buyer_dashboard.html',{'data':data})
 
 @login_required(login_url='login_view')
 def view_products_to_buy(request):
