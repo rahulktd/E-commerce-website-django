@@ -1,17 +1,24 @@
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect
+
+from marketplace.filters import ProductFilter
 from marketplace.forms import BuyerProfileForm
 from marketplace.models import AddProduct, Cart
 
 
 @login_required(login_url='login_view')
 def buyer_dashboard(request):
-    return render(request,'Buyer/buyer_dashboard.html')
+    data = AddProduct.objects.all()
+    data_filter = ProductFilter(request.GET, queryset=data)
+    return render(request,'Buyer/buyer_dashboard.html',{'data_filter':data_filter})
 
 @login_required(login_url='login_view')
 def view_products_to_buy(request):
     data = AddProduct.objects.all()
-    return render(request, 'Buyer/view_products_to_buy.html',{'data':data})
+    data_filter = ProductFilter(request.GET, queryset=data)
+    data = data_filter.qs
+    return render(request, 'Buyer/view_products_to_buy.html',{'data':data,'data_filter':data_filter})
+
 
 @login_required(login_url='login_view')
 def product_view(request,id):
@@ -62,6 +69,8 @@ def cart_view(request):
     cart = Cart.objects.get(user=request.user)
     products = cart.products.all()
     return render(request, 'Buyer/cart_view.html', {'cart': cart, 'products': products})
+
+
 
 
 

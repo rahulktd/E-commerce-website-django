@@ -1,9 +1,17 @@
 {% extends "Buyer/buyer_dashboard.html" %}
+{% load crispy_forms_tags %}
 
 {% block content %}
 
 <div class="container">
+   <form method="get" class="form-inline">
+                <div class="md-form my-0">
+                    {{ data_filter.form|crispy }}
+                    <button class="btn btn-primary" style="margin-left: 530px;" type="submit">Search</button>
+                </div>
+            </form>
   <div class="row">
+
     {% for i in data %}
       <div class="col-md-4">
         <div class="card" style="width: 18rem;">

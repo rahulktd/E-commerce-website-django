@@ -39,7 +39,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'marketplace',
     'crispy_forms',
-    'crispy_bootstrap5'
+    'crispy_bootstrap5',
+    'django_filters'
 ]
 
 CRISPY_TEMPLATE_PACK = 'bootstrap5'
