@@ -3,7 +3,7 @@ from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect
 from marketplace.forms import PostProducts
-from marketplace.models import AddProduct, Cart, AccReg, LikeProduct
+from marketplace.models import AddProduct, Cart, AccReg
 
 
 @login_required(login_url='login_view')
@@ -61,23 +61,26 @@ def reg_user(request):
 #     products = response.json()
 #     return render(request, 'Admin/products_from_api.html', {'products': products})
 
-def like_product(request):
-    username = request.user.username
-    post_id = request.GET.get('post_id')
+# def like_product(request):
+#     username = request.user.username
+#     post_id = request.GET.get('post_id')
+#
+#     post = AddProduct.objects.get(id=post_id)
+#     like_filter = LikeProduct.objects.filter(post_id=post_id, username=username).first()
+#
+#     if like_filter == None:
+#         new_like = LikeProduct.objects.create(post_id=post_id,username=username)
+#         new_like.save()
+#         post.no_of_likes=post.no_of_likes+1
+#         post.save()
+#         return redirect('view_posted')
+#     else:
+#         like_filter.delete()
+#         post.no_of_likes=post.no_of_likes-1
+#         post.save()
+#         return redirect('view_posted')
 
-    post = AddProduct.objects.get(id=post_id)
-    like_filter = LikeProduct.objects.filter(post_id=post_id, username=username).first()
 
-    if like_filter == None:
-        new_like = LikeProduct.objects.create(post_id=post_id,username=username)
-        new_like.save()
-        post.no_of_likes=post.no_of_likes+1
-        post.save()
-        return redirect('view_posted')
-    else:
-        like_filter.delete()
-        post.no_of_likes=post.no_of_likes-1
-        post.save()
-        return redirect('view_posted')
+
 
 

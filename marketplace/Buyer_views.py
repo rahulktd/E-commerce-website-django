@@ -70,7 +70,29 @@ def cart_view(request):
     products = cart.products.all()
     return render(request, 'Buyer/cart_view.html', {'cart': cart, 'products': products})
 
+# def like_product(request,id):
+#     product = AddProduct.objects.get(id=id)
+#     product.liked = request.user
+#     product.save()
+#     return redirect('product_view')
+#
+# def unlike_product(request,id):
+#     product = AddProduct.objects.get(id=id)
+#     product.liked = None
+#     product.save()
+#     return redirect('product_view')
 
+def like_product(request, id):
+    product = AddProduct.objects.get(id=id)
+    if request.user.is_authenticated:
+        product.like.add(request.user)
+    return redirect('product_view', id=id)
+
+def unlike_product(request, id):
+    product = AddProduct.objects.get(id=id)
+    if request.user.is_authenticated:
+        product.like.remove(request.user)
+    return redirect('product_view', id=id)
 
 
 

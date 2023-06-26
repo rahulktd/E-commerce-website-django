@@ -29,14 +29,12 @@ class AddProduct(models.Model):
     brand = models.CharField(max_length=20)
     created_date = models.DateTimeField(default=datetime.now)
     last_update = models.DateTimeField(default=datetime.now)
-    rating = models.IntegerField(default=0)
+    like = models.ManyToManyField(AccReg, related_name='liked_products', blank=True)
 
-class LikeProduct(models.Model):
-    post_id = models.CharField(max_length=500)
-    username = models.CharField(max_length=100)
+    def like_count(self):
+        return self.like.all().count()
 
-    def __str__(self):
-        return self.username
+
 
 class Cart(models.Model):
     user = models.ForeignKey(AccReg, on_delete=models.CASCADE)

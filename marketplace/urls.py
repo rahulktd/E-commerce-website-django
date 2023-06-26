@@ -12,7 +12,7 @@ urlpatterns = [
     path('admin_dashboard',Admin_views.admin_dashboard,name='admin_dashboard'),
     path('post_product',Admin_views.post_product,name='post_product'),
     path('view_posted',Admin_views.view_posted,name='view_posted'),
-    path('like_product',Admin_views.like_product,name='like_product'),
+
 
     # path('view_products_from_api',Admin_views.view_products_from_api,name='view_products_from_api'),
 
@@ -32,6 +32,9 @@ urlpatterns = [
     path('product_view/<int:id>/',Buyer_views.product_view,name='product_view'),
     path('add_to_cart/<int:id>/',Buyer_views.add_to_cart,name='add_to_cart'),
     path('cart_view',Buyer_views.cart_view,name='cart_view'),
+
+    path('like_product/<int:id>/',Buyer_views.like_product,name='like_product'),
+    path('unlike_product/<int:id>/',Buyer_views.unlike_product,name='unlike_product'),
 
 
 ]
